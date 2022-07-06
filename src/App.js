@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/header';
 import WatchList from './components/watchlist';
+import WatchedList from './components/watchedlist';
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <Header />
       <WatchList />
+      <WatchedList />
     </div>
   );
 }

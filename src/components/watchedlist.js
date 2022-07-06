@@ -1,7 +1,7 @@
 import { getWatchList } from '../services/get';
 import React, {useState, useEffect} from "react"
 
-function WatchList() {
+function WatchedList() {
     const [movies, setMovies] = useState([]);
 
     useEffect( () => {
@@ -17,11 +17,11 @@ function WatchList() {
     }, []);
     return (
         <main>
-            <h2>Movies to Watch:</h2>
+            <h2>Movies you have seen</h2>
             <div>
-                {movies.filter(movie => movie.watched === false).map(movie => <div key={movie.name}>{movie.name}</div>)}
+                {movies.filter(movie => movie.watched === true).map(movie => <div key={movie.name}>{movie.name}</div>)}
             </div>
         </main>);
 }
 
-export default WatchList;
+export default WatchedList;
