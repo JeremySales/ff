@@ -6,20 +6,21 @@ import { WatchSeenMovie } from '../services/put';
 function WatchedList() {
     const [movies, setMovies] = useState([]);
 
-    useEffect( () => {
-        async function fetchMovies() {
-            try {
-                const movies = await getWatchList();
-                setMovies(movies);
-            } catch (err) {
-                console.log(err);
-            }
+    async function fetchMovies() {
+        try {
+            const movies = await getWatchList();
+            setMovies(movies);
+        } catch (err) {
+            console.log(err);
         }
+    }
+       useEffect( () => {
         fetchMovies();
     }, []);
 
-    function watchedAgain(movieName, watchCnt){
-        WatchSeenMovie(movieName, watchCnt)
+    async function watchedAgain(movieName, watchCnt){
+        await WatchSeenMovie(movieName, watchCnt)
+        await fetchMovies()
     }
 
     return (

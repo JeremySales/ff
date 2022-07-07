@@ -6,5 +6,4 @@ export async function PostMovie(movieName) {
         watched: false,
         watchCnt: 0
     });
-    await axios.get("http://localhost:8000/").then((response) => response.data)
 }

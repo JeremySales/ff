@@ -7,25 +7,28 @@ import { deleteMovie } from '../services/del';
 
 function WatchList() {
     const [movies, setMovies] = useState([]);
+    
+    async function fetchMovies() {
+        try {
+            const movies = await getWatchList();
+            setMovies(movies);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     useEffect( () => {
-        async function fetchMovies() {
-            try {
-                const movies = await getWatchList();
-                setMovies(movies);
-            } catch (err) {
-                console.log(err);
-            }
-        }
         fetchMovies();
     }, []);
 
-    function updateMovie(movieName){
-        WatchMovie(movieName)
+    async function updateMovie(movieName){
+        await WatchMovie(movieName)
+        await fetchMovies()
     };
 
-    function reMovie(movieName){
-        deleteMovie(movieName)
+    async function reMovie(movieName){
+        await deleteMovie(movieName)
+        await fetchMovies()
     };
 
     return (
@@ -34,7 +37,6 @@ function WatchList() {
             <div className='wl-container'>
                 {movies.filter(movie => movie.watched === false).map(movie => <div key={movie._id} className="wl-movies"><VisibilityTwoToneIcon sx={{width: 35}} onClick={() => updateMovie(movie.name)}/>{movie.name}  <DeleteForeverIcon sx={{color: 'red', width: 35}} onClick={() => reMovie(movie.name)} /></div>)}
             </div>
-
         </main>);
 }
 

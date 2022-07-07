@@ -10,7 +10,7 @@ function UserInputs() {
       };
 
     const resetInputField = () => {
-        setMovieName('')
+        setMovieName("")
     };
 
     async function HandleSubmit(Event) {
@@ -20,11 +20,14 @@ function UserInputs() {
     }
 
     return (
+
+        
         <section>
             <Button onClick={HandleSubmit}>Add Movie</Button>
             <TextField
             label="Movie Name"
             id="name"
+            value={movieName}
             onChange={handleChange}/>
             <Button onClick={resetInputField}>Reset</Button>
         </section>
