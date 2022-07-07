@@ -1,3 +1,4 @@
+
 # Flick Freak
 A self-reported movie tracking database. Note the movies you want to see, and track the number of times you've seen a movie. Never forget if you've seen a movie again!
 
