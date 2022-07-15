@@ -4,8 +4,9 @@ import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { WatchMovie } from '../services/put';
 import { deleteMovie } from '../services/del';
+import WatchedList from './watchedlist';
 
-function WatchList() {
+function WatchList(props) {
     const [movies, setMovies] = useState([]);
     
     async function fetchMovies() {
@@ -32,12 +33,13 @@ function WatchList() {
     };
 
     return (
-        <main>
+        <React.Fragment>
             <h2>Movies to Watch:</h2>
             <div className='wl-container'>
                 {movies.filter(movie => movie.watched === false).map(movie => <div key={movie._id} className="wl-movies"><VisibilityTwoToneIcon sx={{width: 35}} onClick={() => updateMovie(movie.name)}/>{movie.name}  <DeleteForeverIcon sx={{color: 'red', width: 35}} onClick={() => reMovie(movie.name)} /></div>)}
             </div>
-        </main>);
+            <WatchedList />
+        </React.Fragment>);
 }
 
 export default WatchList;

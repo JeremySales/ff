@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {Button, TextField} from '@mui/material';
 import { PostMovie } from '../services/post';
+import WatchList from './watchlist';
 
 function UserInputs() {
     const [movieName, setMovieName] = React.useState("");
@@ -20,9 +21,8 @@ function UserInputs() {
     }
 
     return (
-
-        
-        <section>
+        <React.Fragment>
+            <div>
             <Button onClick={HandleSubmit}>Add Movie</Button>
             <TextField
             label="Movie Name"
@@ -30,7 +30,9 @@ function UserInputs() {
             value={movieName}
             onChange={handleChange}/>
             <Button onClick={resetInputField}>Reset</Button>
-        </section>
+            <WatchList />
+            </div>
+        </React.Fragment>
         
     )
 }

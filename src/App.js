@@ -1,19 +1,18 @@
+import React, {Component} from 'react';
 import './App.css';
 import Header from './components/header';
-import WatchList from './components/watchlist';
-import WatchedList from './components/watchedlist';
 import UserInputs from './components/inputs';
 
-function App() {
+class App extends Component {
 
-  return (
-    <div className="App">
-      <Header />
-      <WatchList />
-      <UserInputs />
-      <WatchedList />
-    </div>
-  );
+  render(){
+    return (
+      <div className="App">
+        <Header />
+        <UserInputs />
+      </div>
+    );
+  }
 }
 
 export default App;
