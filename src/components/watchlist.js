@@ -36,7 +36,12 @@ function WatchList() {
         <React.Fragment>
             <h2>Movies to Watch:</h2>
             <div className='wl-container'>
-                {movies.filter(movie => movie.watched === false).map(movie => <div key={movie._id} className="wl-movies"><VisibilityTwoToneIcon sx={{width: 35}} onClick={() => updateMovie(movie.name)}/>{movie.name}  <DeleteForeverIcon sx={{color: 'red', width: 35}} onClick={() => reMovie(movie.name)} /></div>)}
+                {movies.filter(movie => movie.watched === false)
+                .map(movie => <div key={movie._id} className="wl-movies">
+                    <VisibilityTwoToneIcon sx={{width: 35}} onClick={() => updateMovie(movie.name)}/>
+                    {movie.name}  
+                    <DeleteForeverIcon sx={{color: 'red', width: 35}} onClick={() => reMovie(movie.name)} />
+                    </div>)}
             </div>
             <WatchedList movies={movies} fetchMovies={fetchMovies}/>
         </React.Fragment>);
