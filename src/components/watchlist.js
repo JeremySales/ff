@@ -6,7 +6,7 @@ import { WatchMovie } from '../services/put';
 import { deleteMovie } from '../services/del';
 import WatchedList from './watchedlist';
 
-function WatchList(props) {
+function WatchList() {
     const [movies, setMovies] = useState([]);
     
     async function fetchMovies() {
@@ -38,7 +38,7 @@ function WatchList(props) {
             <div className='wl-container'>
                 {movies.filter(movie => movie.watched === false).map(movie => <div key={movie._id} className="wl-movies"><VisibilityTwoToneIcon sx={{width: 35}} onClick={() => updateMovie(movie.name)}/>{movie.name}  <DeleteForeverIcon sx={{color: 'red', width: 35}} onClick={() => reMovie(movie.name)} /></div>)}
             </div>
-            <WatchedList />
+            <WatchedList movies={movies} fetchMovies={fetchMovies}/>
         </React.Fragment>);
 }
 
