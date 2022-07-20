@@ -11,6 +11,7 @@ function App() {
 
     useEffect( () => {
         setMovieName();
+        fetchMovies();
     }, []);
 
     const [movies, setMovies] = useState([]);
@@ -21,25 +22,21 @@ function App() {
             setMovies(movies);
         } catch (err) {
             console.log(err);
-        }
-    }
-
-    useEffect( () => {
-        fetchMovies();
-    }, []);
+        };
+    };
 
     const handleChange = Event => {
       setMovieName(Event.target.value)
-      console.log(movieName)
     };
+
   async function HandleSubmit() {
-    await PostMovie(movieName)
-    await setMovieName("")
-    await fetchMovies()
-}
+    await PostMovie(movieName);
+    await setMovieName("");
+    await fetchMovies();
+};
 
 const resetInputField = () => {
-  setMovieName("")
+  setMovieName("");
 };
     return (
       <div className="App">
@@ -49,13 +46,13 @@ const resetInputField = () => {
             <TextField
             label="Movie Name"
             id="name"
-            value={movieName}
+            value={movieName || ''}
             onChange={handleChange}/>
             <Button onClick={resetInputField}>Reset</Button>
             </div>
         <WatchList  movies = {movies} setMovies = {setMovies} fetchMovies = {fetchMovies}/>
       </div>
     );
-  }
+  };
 
 export default App;

@@ -22,7 +22,7 @@ function WatchList(props) {
             <div className='wl-container'>
                 {props.movies.filter(movie => movie.watched === false)
                 .map(movie => <div key={movie._id} className="wl-movies">
-                    <VisibilityTwoToneIcon sx={{width: 35}} onClick={() => updateMovie(movie.name)}/>
+                    <VisibilityTwoToneIcon sx={{width: 35, color: "green"}} onClick={() => updateMovie(movie.name)}/>
                     {movie.name}  
                     <DeleteForeverIcon sx={{color: 'red', width: 35}} onClick={() => reMovie(movie.name)} />
                     </div>)}

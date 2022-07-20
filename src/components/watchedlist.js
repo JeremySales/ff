@@ -14,7 +14,7 @@ function WatchedList(props) {
             <div className='wdl-container'>
                 {props.movies.filter(movie => movie.watched === true)
                 .map(movie => <div key={movie._id} className='wdl-movies'>
-                    <VisibilityTwoToneIcon sx={{width: 35}} onClick={() => watchedAgain(movie.name, movie.watchCnt)}/>
+                    <VisibilityTwoToneIcon sx={{width: 35, color: "green"}} onClick={() => watchedAgain(movie.name, movie.watchCnt)}/>
                     {movie.name}
                     <span className='label'>Watched:</span>
                     {movie.watchCnt}
