@@ -1,49 +1,33 @@
-import { getWatchList } from '../services/get';
-import React, {useState, useEffect} from "react"
+import React from "react"
 import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { WatchMovie } from '../services/put';
 import { deleteMovie } from '../services/del';
 import WatchedList from './watchedlist';
 
-function WatchList() {
-    const [movies, setMovies] = useState([]);
-    
-    async function fetchMovies() {
-        try {
-            const movies = await getWatchList();
-            setMovies(movies);
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    useEffect( () => {
-        fetchMovies();
-    }, []);
-
+function WatchList(props) {
     async function updateMovie(movieName){
         await WatchMovie(movieName)
-        await fetchMovies()
+        await props.fetchMovies()
     };
 
     async function reMovie(movieName){
         await deleteMovie(movieName)
-        await fetchMovies()
+        await props.fetchMovies()
     };
 
     return (
         <React.Fragment>
             <h2>Movies to Watch:</h2>
             <div className='wl-container'>
-                {movies.filter(movie => movie.watched === false)
+                {props.movies.filter(movie => movie.watched === false)
                 .map(movie => <div key={movie._id} className="wl-movies">
                     <VisibilityTwoToneIcon sx={{width: 35}} onClick={() => updateMovie(movie.name)}/>
                     {movie.name}  
                     <DeleteForeverIcon sx={{color: 'red', width: 35}} onClick={() => reMovie(movie.name)} />
                     </div>)}
             </div>
-            <WatchedList movies={movies} fetchMovies={fetchMovies}/>
+            <WatchedList movies={props.movies} fetchMovies={props.fetchMovies}/>
         </React.Fragment>);
 }
 

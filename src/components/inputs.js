@@ -1,36 +1,24 @@
 import * as React from 'react'
 import {Button, TextField} from '@mui/material';
-import { PostMovie } from '../services/post';
-import WatchList from './watchlist';
 
-function UserInputs() {
-    const [movieName, setMovieName] = React.useState("");
 
+function UserInputs(props) {
     const handleChange = Event => {
-        setMovieName(Event.target.value)
+        props.setMovieName(Event.target.value)
+        console.log(props.movieName)
       };
 
-    const resetInputField = () => {
-        setMovieName("")
-    };
-
-    async function HandleSubmit(Event) {
-        Event.preventDefault();
-        await PostMovie(movieName)
-        setMovieName("")
-    }
 
     return (
         <React.Fragment>
             <div>
-            <Button onClick={HandleSubmit}>Add Movie</Button>
+            <Button onClick={props.HandleSubmit}>Add Movie</Button>
             <TextField
             label="Movie Name"
             id="name"
-            value={movieName}
+            value={props.movieName}
             onChange={handleChange}/>
-            <Button onClick={resetInputField}>Reset</Button>
-            <WatchList />
+            <Button onClick={props.resetInputField}>Reset</Button>
             </div>
         </React.Fragment>
         
