@@ -41,14 +41,16 @@ const resetInputField = () => {
     return (
       <div className="App">
         <Header />
-        <div>
-            <Button onClick={HandleSubmit}>Add Movie</Button>
+        <div className='inputCntls'>
+            <Button onClick={HandleSubmit} variant="contained" color='success'>Add Movie</Button>
             <TextField
             label="Movie Name"
             id="name"
             value={movieName || ''}
-            onChange={handleChange}/>
-            <Button onClick={resetInputField}>Reset</Button>
+            onChange={handleChange}
+            fullWidth
+            margin='normal'/>
+            <Button onClick={resetInputField} variant="contained" color='error'>Reset</Button>
             </div>
         <WatchList  movies = {movies} setMovies = {setMovies} fetchMovies = {fetchMovies}/>
       </div>

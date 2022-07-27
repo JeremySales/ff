@@ -10,7 +10,7 @@ function WatchedList(props) {
 
     return (
         <Fragment>
-            <h2>Movies you have seen</h2>
+            <h2>Movies You Have Seen:</h2>
             <div className='wdl-container'>
                 {props.movies.filter(movie => movie.watched === true)
                 .map(movie => <div key={movie._id} className='wdl-movies'>
