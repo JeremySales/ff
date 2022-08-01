@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import './css/normalize.css'
 import './App.css';
 import Header from './components/header';
 import {Button, TextField} from '@mui/material';
